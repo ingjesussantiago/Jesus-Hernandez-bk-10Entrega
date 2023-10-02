@@ -6,6 +6,7 @@ import cartsRouter from "./src/routers/carts.Router.js"
 import loginRouter from "./src/routers/login.Router.js"
 import sessionRouter from "./src/routers/session.router.js"
 import githubviews from "./src/routers/github.views.Router.js"
+import userRouter from "./src/routers/user.router.js"
 import handlebars from "express-handlebars"
 import { Server } from "socket.io"
 import "./src/dao/mongoosedb/dbConfig.js"
@@ -16,9 +17,6 @@ import MongoStore from "connect-mongo"
 import mongoose from "mongoose"
 import passport from "passport"
 import initializePassport from "./src/config/passport.config.js"
-
-
-
 
 
 
@@ -57,13 +55,10 @@ app.use("/api/carts", cartsRouter)
 app.use("/api/products", productosRouter)
 app.use("/api/session",sessionRouter)
 app.use("/login",loginRouter)
+app.use("/user",userRouter)
 
 app.use("/", viewRouter)
 app.use("/github",githubviews )
-
-
-
-
 
 // app.get("/crearcoki",(req,res)=>{
 //     res.cookie("cookie4","primera",{maxAge:1000} ).send("prueba de cooki")

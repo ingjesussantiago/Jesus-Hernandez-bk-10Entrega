@@ -16,14 +16,16 @@ router.post("/registro", passport.authenticate('registro', { failureRedirect: '/
 router.post("/login", passport.authenticate("login", { failureRedirect: '/api/sessions/fail-login' }), async (req, res) => {
     console.log("User found to login:");
     const user = req.user;
-    console.log(user);
+    console.log( "res.user",user);
 
     if (!user) return res.status(401).send({ status: "error", error: "credenciales incorrectas" });
     req.session.user = {
+        id:user._id,
         nombre: `${user.nombre} ${user.apellido}`,
         email: user.email,
         edad: user.edad
     }
+    console.log(req.session.user);
     res.send({ status: "success", payload: req.session.user, message: "¡Primer logueo realizado! :)" });
 });
 

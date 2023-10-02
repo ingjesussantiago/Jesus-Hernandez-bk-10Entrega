@@ -10,9 +10,20 @@ const schema = new mongoose.Schema({
         unique: true
     },
     edad: Number,
-    rol:String,
+    rol: String,
     password: String,
-    loggedBy:String
+    loggedBy: String,
+    cart: {
+        type: [
+            {
+                _id: {
+                    type: mongoose.Types.ObjectId,
+                    ref: 'carts'
+                }
+            }
+        ],
+        default: []
+    }
 })
 
 const userModel = mongoose.model(collection, schema);
