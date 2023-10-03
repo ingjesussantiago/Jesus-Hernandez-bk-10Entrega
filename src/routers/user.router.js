@@ -1,12 +1,13 @@
-import { Router } from "express";
-import { __dirname } from "../../utils.js";
+import { Router } from "express"
+import { __dirname } from "../../utils.js"
 import managerUser from "../dao/mongoosedb/managerMongose/managerUserMongoose.js"
-
 
 const router = Router()
 
 const ManagerUser = new managerUser()
+
 router.get("/", async (req, res) => {
+    console.log({user:req.session.user});
     res.render("profile", { user: req.session.user })
 })
 

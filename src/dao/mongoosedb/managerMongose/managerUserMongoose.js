@@ -1,5 +1,6 @@
 import userModel from "../models/user.model.js"
 import { cartModel } from "../models/cart.model.js";
+import mongoose, { get } from "mongoose";
 
 
 export default class ManagerCart {
@@ -29,10 +30,21 @@ export default class ManagerCart {
                 ).exec();
 
             } else {
-            console.log("El carrito contiene elementos");
-             }
 
-            return user
+                const cart = await userModel.findById(user._id)
+                const cartid = new mongoose.Types.ObjectId(cart.cart[0])
+
+                const getCartId = await cartModel.findById(cartid)
+                // console.log("desde ",cartid);
+                // console.log("getCartId",getCartId.products);
+                // console.log("El carrito contiene elementos");
+                return { productos: getCartId.products }
+
+            }
+
+            return productos
+
+
 
         } catch (error) {
             console.error('Error al traer add carrito:', err.message);
