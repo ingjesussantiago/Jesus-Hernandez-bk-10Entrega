@@ -18,10 +18,12 @@ router.get("/addCart", async (req, res) => {
             const { id } = req.session.user
             console.log("desde req.session", id);
 
-            const createCarToUser = await ManagerUser.addCartToUser(id)
+            const products = await ManagerUser.addCartToUser(id)
+
+            res.render("carrito", {products:products.productos })
 
 
-            res.json({ createCarToUser })
+            // res.json({products:products.productos })
 
 
         } else {

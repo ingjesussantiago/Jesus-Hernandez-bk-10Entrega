@@ -30,14 +30,14 @@ export default class ManagerCart {
                 ).exec();
 
             } else {
-
+                // console.log("El carrito contiene elementos");
                 const cart = await userModel.findById(user._id)
                 const cartid = new mongoose.Types.ObjectId(cart.cart[0])
-
-                const getCartId = await cartModel.findById(cartid)
                 // console.log("desde ",cartid);
+                const getCartId = await cartModel.findById(cartid)
+
                 // console.log("getCartId",getCartId.products);
-                // console.log("El carrito contiene elementos");
+
                 return { productos: getCartId.products }
 
             }
