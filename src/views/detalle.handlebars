@@ -16,10 +16,11 @@
                  <small class="text-muted">{{producto.descripcion}}</small><br>
                                    
               </p>
-              <p class="card-text">{{producto.price}}</p>
+              <p class="card-text">${{producto.price}}</p>
               <label for="cantidad1">Cantidad:</label>
               <input type="number" id="cantidad1" class="form-control mb-2">
-              <button class="btn btn-primary btn-block" id="agregarAlCarrito1">Agregar al Carrito</button>
+              {{!-- <button class="btn btn-primary btn-block" id="agregarAlCarrito1">Agregar al Carrito</button> --}}
+              <a href="/user/addproduct" class="btn btn-primary text-center my-2">agregar a Carrito</a>
             </div>
           </div>
         </div>
